@@ -1,0 +1,10 @@
+.show__more__button__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #show__more__button {
+    margin: 25px auto;
+    display: inline-block;
+  }
+}

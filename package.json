@@ -11,8 +11,21 @@
 		"lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --fix"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@mui/material": "^5.15.0",
+		"@mui/styled-engine-sc": "^6.0.0-alpha.8",
+		"@redux-devtools/extension": "^3.3.0",
+		"axios": "^1.6.2",
+		"bulma": "^0.9.4",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"react-redux": "^9.0.4",
+		"react-router-dom": "^6.21.0",
+		"redux": "^5.0.0",
+		"semantic-ui-css": "^2.5.0",
+		"semantic-ui-react": "^2.1.5",
+		"styled-components": "^6.1.1"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.28",

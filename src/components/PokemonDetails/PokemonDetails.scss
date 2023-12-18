@@ -1,0 +1,132 @@
+.details__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 100px;
+
+  .details__pokemon__name {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
+  .details__image__progress__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+    .details__image {
+      width: 100%;
+      padding: 0 150px;
+      border-radius: 5px;
+      background-color: white;
+    }
+    .details__progress__bars {
+      width: 30%;
+      border-radius: 5px;
+      background-color: white;
+      padding: 25px;
+
+      .details__stats__title {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+  }
+
+  .resistances {
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 25px;
+    padding: 25px;
+
+    .details__resist__category {
+      margin-bottom: 15px;
+    }
+
+    .resists__container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    .details__resistances__title {
+      font-size: 2em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.resist__wrapper {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details__resist__category {
+  margin-top: 5px;
+  color: gray;
+  font-weight: bold;
+}
+
+.details__stats__labels {
+  display: inline-block;
+  margin: 0 0 5px 5px;
+}
+
+@media screen and (max-width: 1850px) {
+  .details__wrapper .details__image__progress__wrapper .details__image {
+    width: 100%;
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 1660px) {
+  .details__wrapper .details__image__progress__wrapper .details__image {
+    width: 100%;
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .details__wrapper .details__image__progress__wrapper .details__image {
+    width: 100%;
+    padding: 0 0;
+  }
+  .details__wrapper {
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  .details__wrapper {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .details__wrapper {
+    padding: 0;
+  }
+  .details__wrapper .details__image__progress__wrapper {
+    display: block;
+  }
+
+  .details__wrapper .details__image__progress__wrapper .details__image {
+    width: 100%;
+  }
+
+  .details__wrapper
+    .details__image__progress__wrapper
+    .details__progress__bars {
+    width: 100%;
+    margin-top: 15px;
+  }
+}

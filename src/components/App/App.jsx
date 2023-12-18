@@ -1,26 +1,40 @@
-import logo from '../../assets/logo.svg';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { CircularProgress } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import Home from '../Home/Home';
+import PokemonDetails from '../PokemonDetails/PokemonDetails';
+import { changeLimitValue, fetchPokemons } from '../../actions/pokemons';
 
 import './App.scss';
+import 'semantic-ui-css/semantic.min.css';
 
 function App() {
+  const dispatch = useDispatch();
+  const limitPokemonsValue = useSelector((state) => state.pokemons.limitValue);
+  const isAppLoading = useSelector((state) => state.pokemons.isAppLoading);
+  useEffect(() => {
+    dispatch(fetchPokemons(limitPokemonsValue));
+  }, []);
+
+  if (isAppLoading) {
+    return (
+      <div className="loader__container">
+        <CircularProgress id="loader" />
+        <span>Chargement...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/components/App/App.jsx</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://react.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pokemon/:slug" element={<PokemonDetails />} />
+        <Route path="*" element={<div>404</div>} />
+      </Routes>
     </div>
   );
 }

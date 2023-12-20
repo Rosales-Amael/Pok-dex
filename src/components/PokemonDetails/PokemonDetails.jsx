@@ -1,28 +1,39 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { CircularProgress } from '@mui/material';
 import { Icon, Label } from 'semantic-ui-react';
 import './PokemonDetails.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSinglePokemon } from '../../actions/pokemons';
+import { fetchSinglePokemon, setLoaderTrue } from '../../actions/pokemons';
 
 const PokemonDetails = () => {
   const dispatch = useDispatch();
   const { slug } = useParams();
+  const currentPokemon = useSelector((state) => state.pokemons.singlePokemon);
+  const isAppLoading = useSelector((state) => state.pokemons.isAppLoading);
 
   useEffect(() => {
+    dispatch(setLoaderTrue());
     dispatch(fetchSinglePokemon(slug));
-  }, []);
-  const currentPokemon = useSelector((state) => state.pokemons.singlePokemon);
-  console.log(currentPokemon);
+  }, [dispatch, slug]);
+
+  if (isAppLoading) {
+    return (
+      <div className="loader__container">
+        <CircularProgress id="loader" />
+        <span>Chargement...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="details__wrapper">
       <Link to="/">
         <Icon
           inverted
-          color="gray"
           circular
           link="/"
           name="home"
@@ -35,12 +46,13 @@ const PokemonDetails = () => {
         <div>
           <img src={currentPokemon.image} alt="" className="details__image" />
           <Label.Group className="label__group">
-            {currentPokemon.apiTypes.map((currentType) => (
-              <Label image key={currentType.id}>
-                <img src={currentType.image} />
-                <Label.Detail>{currentType.name}</Label.Detail>
-              </Label>
-            ))}
+            {currentPokemon.apiTypes &&
+              currentPokemon.apiTypes.map((currentType) => (
+                <Label image key={currentType.id}>
+                  <img src={currentType.image} />
+                  <Label.Detail>{currentType.name}</Label.Detail>
+                </Label>
+              ))}
           </Label.Group>
         </div>
         <div className="details__progress__bars">
@@ -87,17 +99,18 @@ const PokemonDetails = () => {
       <div className="resistances">
         <h1 className="details__resistances__title">Résistances </h1>
         <div className="resists__container">
-          {currentPokemon.apiResistances.map((currentResistant) => (
-            <div className="resist__wrapper" key={currentResistant.id}>
-              <Label image>
-                <img src="https://static.wikia.nocookie.net/pokemongo/images/0/05/Poison.png" />
-                <Label.Detail>{currentResistant.name}</Label.Detail>
-              </Label>
-              <p className="details__resist__category">
-                {currentResistant.damage_relation}
-              </p>
-            </div>
-          ))}
+          {currentPokemon.apiResistances &&
+            currentPokemon.apiResistances.map((currentResistant) => (
+              <div className="resist__wrapper" key={currentResistant.id}>
+                <Label image>
+                  <img src="https://static.wikia.nocookie.net/pokemongo/images/0/05/Poison.png" />
+                  <Label.Detail>{currentResistant.name}</Label.Detail>
+                </Label>
+                <p className="details__resist__category">
+                  {currentResistant.damage_relation}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

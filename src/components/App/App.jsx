@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Home from '../Home/Home';
 import PokemonDetails from '../PokemonDetails/PokemonDetails';
-import { changeLimitValue, fetchPokemons } from '../../actions/pokemons';
+import { fetchPokemons, setLoaderTrue } from '../../actions/pokemons';
 
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
@@ -16,6 +16,7 @@ function App() {
   const limitPokemonsValue = useSelector((state) => state.pokemons.limitValue);
   const isAppLoading = useSelector((state) => state.pokemons.isAppLoading);
   useEffect(() => {
+    dispatch(setLoaderTrue());
     dispatch(fetchPokemons(limitPokemonsValue));
   }, []);
 

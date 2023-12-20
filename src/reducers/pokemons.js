@@ -4,6 +4,7 @@ import {
   SAVE_SINGLE_POKEMON,
   SET_LOADER_FALSE,
   SET_LOADER_TRUE,
+  setLoaderTrue,
 } from '../actions/pokemons';
 
 const initialState = {

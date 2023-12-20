@@ -5,6 +5,7 @@ import {
   savePokemons,
   saveSinglePokemon,
   setLoaderFalse,
+  setLoaderTrue,
 } from '../actions/pokemons';
 
 const baseApiUrl = `https://pokebuildapi.fr/api/v1`;

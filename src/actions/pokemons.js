@@ -1,18 +1,24 @@
+export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 export const CHANGE_LIMIT_VALUE = 'CHANGE_LIMIT_VALUE';
 export const FETCH_POKEMONS = 'FETCH_POKEMONS';
-export const FETCH_SINGLE_POKEMON = 'FETCH_SINGLE_POKEMON';
+export const FETCH_ONE_POKEMON_DETAILS = 'FETCH_ONE_POKEMON_DETAILS';
 export const SAVE_POKEMONS = 'SAVE_POKEMONS';
-export const SAVE_SINGLE_POKEMON = 'SAVE_SINGLE_POKEMON';
-export const SET_LOADER_TRUE = 'SET_LOADER_TRUE';
-export const SET_LOADER_FALSE = 'SET_LOADER_FALSE';
+export const SAVE_ONE_POKEMON_DETAILS = 'SAVE_ONE_POKEMON_DETAILS';
+export const FETCH_SEARCH_SINGLE_POKEMON = 'FETCH_SEARCH_SINGLE_POKEMON';
+export const SAVE_SEARCH_SINGLE_POKEMON = 'SAVE_SEARCH_SINGLE_POKEMON';
+
+export const changeSearchValue = (newValue) => ({
+  type: CHANGE_SEARCH_VALUE,
+  newValue,
+});
 
 export const fetchPokemons = (limit) => ({
   type: FETCH_POKEMONS,
   limit,
 });
 
-export const fetchSinglePokemon = (pokemonName) => ({
-  type: FETCH_SINGLE_POKEMON,
+export const fetchOnePokemonDetails = (pokemonName) => ({
+  type: FETCH_ONE_POKEMON_DETAILS,
   pokemonName,
 });
 
@@ -21,18 +27,20 @@ export const savePokemons = (objectPokemons) => ({
   objectPokemons,
 });
 
-export const saveSinglePokemon = (pokemon) => ({
-  type: SAVE_SINGLE_POKEMON,
+export const saveOnePokemonDetails = (pokemon) => ({
+  type: SAVE_ONE_POKEMON_DETAILS,
   pokemon,
 });
 export const changeLimitValue = () => ({
   type: CHANGE_LIMIT_VALUE,
 });
 
-export const setLoaderTrue = () => ({
-  type: SET_LOADER_TRUE,
+export const fetchSearchSinglePokemon = (pokemonName) => ({
+  type: FETCH_SEARCH_SINGLE_POKEMON,
+  pokemonName,
 });
 
-export const setLoaderFalse = () => ({
-  type: SET_LOADER_FALSE,
+export const saveSearchSinglePokemon = (pokemon) => ({
+  type: SAVE_SEARCH_SINGLE_POKEMON,
+  pokemon,
 });

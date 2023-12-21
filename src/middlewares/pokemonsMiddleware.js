@@ -1,18 +1,18 @@
 import axios from 'axios';
 import {
+  FETCH_ONE_POKEMON_DETAILS,
   FETCH_POKEMONS,
-  FETCH_SINGLE_POKEMON,
+  FETCH_SEARCH_SINGLE_POKEMON,
+  saveOnePokemonDetails,
   savePokemons,
-  saveSinglePokemon,
-  setLoaderFalse,
-  setLoaderTrue,
+  saveSearchSinglePokemon,
 } from '../actions/pokemons';
 
 const baseApiUrl = `https://pokebuildapi.fr/api/v1`;
 
 const pokemonsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_POKEMONS: {
+    case FETCH_POKEMONS:
       axios
         .get(
           `${baseApiUrl}/pokemon/limit/${store.getState().pokemons.limitValue}`
@@ -20,23 +20,34 @@ const pokemonsMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(savePokemons(response.data));
-          store.dispatch(setLoaderFalse());
         })
         .catch((error) => {
-          console.log(error);
+          console.warn(error);
         });
       break;
-    }
-    case FETCH_SINGLE_POKEMON: {
+
+    case FETCH_ONE_POKEMON_DETAILS: {
       axios
         .get(`${baseApiUrl}/pokemon/${action.pokemonName}`)
         .then((response) => {
           console.log(response);
-          store.dispatch(saveSinglePokemon(response.data));
-          store.dispatch(setLoaderFalse());
+          store.dispatch(saveOnePokemonDetails(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          console.warn(error);
+        });
+      break;
+    }
+
+    case FETCH_SEARCH_SINGLE_POKEMON: {
+      axios
+        .get(`${baseApiUrl}/pokemon/${action.pokemonName}`)
+        .then((response) => {
+          console.log(response);
+          store.dispatch(saveSearchSinglePokemon(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
         });
       break;
     }

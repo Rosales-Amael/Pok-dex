@@ -1,11 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 import PropTypes from 'prop-types';
 import { Card as SemanticCard, Label, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchOnePokemonDetails } from '../../../../actions/pokemons';
 
 const Card = ({ name, pokedexId, image, slug, apiTypes }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
-    <SemanticCard as={Link} to={`/pokemon/${slug}`}>
+    <SemanticCard
+      onClick={() => {
+        dispatch(fetchOnePokemonDetails(slug));
+        navigate(`/pokemon/${slug}`); // Merci bébou Louis LE CROLLER
+      }}
+    >
       <Image src={image} wrapped ui={false} />
       <SemanticCard.Content>
         <SemanticCard.Header>{name}</SemanticCard.Header>

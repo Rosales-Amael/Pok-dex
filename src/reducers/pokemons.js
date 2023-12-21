@@ -1,18 +1,19 @@
 import {
   CHANGE_LIMIT_VALUE,
+  CHANGE_SEARCH_VALUE,
+  SAVE_ONE_POKEMON_DETAILS,
   SAVE_POKEMONS,
-  SAVE_SINGLE_POKEMON,
-  SET_LOADER_FALSE,
-  SET_LOADER_TRUE,
-  setLoaderTrue,
+  SAVE_SEARCH_SINGLE_POKEMON,
 } from '../actions/pokemons';
 
 const initialState = {
   homePokemons: [],
-  singlePokemon: {},
+  onePokemonDetails: {},
   searchValue: '',
   limitValue: 50,
-  isAppLoading: true,
+  isHomePokemonsLoaded: false,
+  isOnePokemonDetailsLoaded: false,
+  isSearchSinglePokemonLoaded: false,
 };
 
 const pokemonsReducer = (state = initialState, action = {}) => {
@@ -21,13 +22,23 @@ const pokemonsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         homePokemons: action.objectPokemons,
+        isHomePokemonsLoaded: true,
       };
     }
 
-    case SAVE_SINGLE_POKEMON: {
+    case SAVE_ONE_POKEMON_DETAILS: {
       return {
         ...state,
-        singlePokemon: action.pokemon,
+        onePokemonDetails: action.pokemon,
+        isOnePokemonDetailsLoaded: true,
+      };
+    }
+
+    case SAVE_SEARCH_SINGLE_POKEMON: {
+      return {
+        ...state,
+        homePokemons: action.pokemon,
+        isSearchSinglePokemonLoaded: true,
       };
     }
 
@@ -38,16 +49,10 @@ const pokemonsReducer = (state = initialState, action = {}) => {
       };
     }
 
-    case SET_LOADER_TRUE: {
+    case CHANGE_SEARCH_VALUE: {
       return {
         ...state,
-        isAppLoading: true,
-      };
-    }
-    case SET_LOADER_FALSE: {
-      return {
-        ...state,
-        isAppLoading: false,
+        searchValue: action.newValue,
       };
     }
 

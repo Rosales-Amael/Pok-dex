@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Home from '../Home/Home';
 import PokemonDetails from '../PokemonDetails/PokemonDetails';
-import { fetchPokemons, setLoaderTrue } from '../../actions/pokemons';
+import { fetchPokemons } from '../../actions/pokemons';
 
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
@@ -14,13 +14,15 @@ import 'semantic-ui-css/semantic.min.css';
 function App() {
   const dispatch = useDispatch();
   const limitPokemonsValue = useSelector((state) => state.pokemons.limitValue);
-  const isAppLoading = useSelector((state) => state.pokemons.isAppLoading);
+  const isHomePokemonsLoaded = useSelector(
+    (state) => state.pokemons.isHomePokemonsLoaded
+  );
+
   useEffect(() => {
-    dispatch(setLoaderTrue());
     dispatch(fetchPokemons(limitPokemonsValue));
   }, []);
 
-  if (isAppLoading) {
+  if (!isHomePokemonsLoaded) {
     return (
       <div className="loader__container">
         <CircularProgress id="loader" />

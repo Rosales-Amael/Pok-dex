@@ -9,9 +9,13 @@ const Cards = () => {
   return (
     <div className="cards__wrapper">
       <SemanticCard.Group>
-        {homePokemonsList.map((currentPokemon) => (
-          <Card key={currentPokemon.id} {...currentPokemon} />
-        ))}
+        {Array.isArray(homePokemonsList) ? (
+          homePokemonsList.map((currentPokemon) => (
+            <Card key={currentPokemon.id} {...currentPokemon} />
+          ))
+        ) : (
+          <Card key={homePokemonsList.id} {...homePokemonsList} />
+        )}
       </SemanticCard.Group>
     </div>
   );

@@ -1,0 +1,54 @@
+.resistances {
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 25px;
+  padding: 25px;
+
+  .details__resistances__title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .resists__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    #neutral {
+      color: gray;
+    }
+
+    #resistant {
+      color: #48c78f;
+    }
+
+    #vulnerable {
+      color: rgb(251, 123, 123);
+    }
+
+    #twice_resistant {
+      color: rgb(0, 173, 0);
+    }
+
+    #twice_vulnerable {
+      color: red;
+    }
+
+    .resist__wrapper {
+      width: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .details__resist__category {
+        margin: 5px 0 15px 0;
+        color: gray;
+        font-weight: bold;
+      }
+    }
+  }
+}

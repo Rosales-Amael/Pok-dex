@@ -1,0 +1,19 @@
+.circle__image__evolution {
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 200px;
+
+  .image__evolution {
+    width: 200px;
+  }
+}
+.evolution__name {
+  margin-top: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  font-style: italic;
+  color: gray;
+}

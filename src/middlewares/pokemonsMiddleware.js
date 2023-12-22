@@ -1,9 +1,11 @@
 import axios from 'axios';
 import {
   FETCH_ONE_POKEMON_DETAILS,
+  FETCH_ONE_POKEMON_EVOLUTION,
   FETCH_POKEMONS,
   FETCH_SEARCH_SINGLE_POKEMON,
   saveOnePokemonDetails,
+  saveOnePokemonEvolution,
   savePokemons,
   saveSearchSinglePokemon,
 } from '../actions/pokemons';
@@ -45,6 +47,19 @@ const pokemonsMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(saveSearchSinglePokemon(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      break;
+    }
+
+    case FETCH_ONE_POKEMON_EVOLUTION: {
+      axios
+        .get(`${baseApiUrl}/pokemon/${action.pokemonName}`)
+        .then((response) => {
+          console.log(response);
+          store.dispatch(saveOnePokemonEvolution(response.data));
         })
         .catch((error) => {
           console.warn(error);

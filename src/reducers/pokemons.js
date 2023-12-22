@@ -2,6 +2,7 @@ import {
   CHANGE_LIMIT_VALUE,
   CHANGE_SEARCH_VALUE,
   SAVE_ONE_POKEMON_DETAILS,
+  SAVE_ONE_POKEMON_EVOLUTION,
   SAVE_POKEMONS,
   SAVE_SEARCH_SINGLE_POKEMON,
 } from '../actions/pokemons';
@@ -9,11 +10,13 @@ import {
 const initialState = {
   homePokemons: [],
   onePokemonDetails: {},
-  searchValue: '',
+  onePokemonEvolution: {},
+  searchValue: 'td',
   limitValue: 50,
   isHomePokemonsLoaded: false,
   isOnePokemonDetailsLoaded: false,
   isSearchSinglePokemonLoaded: false,
+  isOnePokemonEvolution: false,
 };
 
 const pokemonsReducer = (state = initialState, action = {}) => {
@@ -39,6 +42,14 @@ const pokemonsReducer = (state = initialState, action = {}) => {
         ...state,
         homePokemons: action.pokemon,
         isSearchSinglePokemonLoaded: true,
+      };
+    }
+
+    case SAVE_ONE_POKEMON_EVOLUTION: {
+      return {
+        ...state,
+        onePokemonEvolution: action.pokemon,
+        isOnePokemonEvolution: true,
       };
     }
 

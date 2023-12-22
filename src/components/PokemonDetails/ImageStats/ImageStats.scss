@@ -1,0 +1,35 @@
+.details__image__progress__wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  .details__image {
+    width: 100%;
+    padding: 0 150px;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  .details__progress__bars {
+    width: 30%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 25px;
+
+    .details__stats__title {
+      font-size: 2em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .details__stats__labels {
+      display: inline-block;
+      margin: 0 0 5px 5px;
+    }
+
+    .stats__value {
+      font-weight: bolder;
+    }
+  }
+}

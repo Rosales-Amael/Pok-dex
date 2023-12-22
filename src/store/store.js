@@ -3,8 +3,11 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 
 import reducer from '../reducers';
 import pokemonsMiddleware from '../middlewares/pokemonsMiddleware';
+import typesMiddleware from '../middlewares/typesMiddleware';
 
-const enhancer = composeWithDevTools(applyMiddleware(pokemonsMiddleware));
+const enhancer = composeWithDevTools(
+  applyMiddleware(pokemonsMiddleware, typesMiddleware)
+);
 
 const store = createStore(reducer, enhancer);
 

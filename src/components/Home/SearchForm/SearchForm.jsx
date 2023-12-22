@@ -32,7 +32,8 @@ const SearchForm = () => {
           noResultsMessage="Aucun pokémon trouvé..."
           value={searchInputValue}
           onChange={(e, data) => {
-            dispatch(changeSearchValue(data.value));
+            const currentPokemon = data.value;
+            dispatch(changeSearchValue(currentPokemon));
           }}
         />
         {/* <Form.Field>

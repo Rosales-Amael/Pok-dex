@@ -1,20 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { Modal, Icon } from 'semantic-ui-react';
-import { useEffect } from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
 
+import Loader from '../Loader/Loader';
+import Error404 from '../Error404/Error404';
 import Home from '../Home/Home';
 import PokemonDetails from '../PokemonDetails/PokemonDetails';
+import Footer from '../Footer/Footer';
+
 import { fetchPokemons } from '../../actions/pokemons';
 
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
-import Loader from '../Loader/Loader';
-import Error404 from '../Error404/Error404';
-import Footer from '../Footer/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchPokemons(limitPokemonsValue));
-  }, []);
+  }, [dispatch, limitPokemonsValue]);
 
   if (!isHomePokemonsLoaded) {
     return <Loader />;

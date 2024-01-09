@@ -20,24 +20,18 @@ const pokemonsMiddleware = (store) => (next) => (action) => {
           `${baseApiUrl}/pokemon/limit/${store.getState().pokemons.limitValue}`
         )
         .then((response) => {
-          console.log(response);
           store.dispatch(savePokemons(response.data));
         })
-        .catch((error) => {
-          console.warn(error);
-        });
+        .catch(() => {});
       break;
 
     case FETCH_ONE_POKEMON_DETAILS: {
       axios
         .get(`${baseApiUrl}/pokemon/${action.pokemonName}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveOnePokemonDetails(response.data));
         })
-        .catch((error) => {
-          console.warn(error);
-        });
+        .catch(() => {});
       break;
     }
 
@@ -45,11 +39,9 @@ const pokemonsMiddleware = (store) => (next) => (action) => {
       axios
         .get(`${baseApiUrl}/pokemon/${action.pokemonName}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveSearchSinglePokemon(response.data));
         })
-        .catch((error) => {
-          console.warn(error);
+        .catch(() => {
           window.location.href = '/404';
         });
       break;
@@ -59,12 +51,9 @@ const pokemonsMiddleware = (store) => (next) => (action) => {
       axios
         .get(`${baseApiUrl}/pokemon/${action.pokemonName}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveOnePokemonEvolution(response.data));
         })
-        .catch((error) => {
-          console.warn(error);
-        });
+        .catch(() => {});
       break;
     }
     default:

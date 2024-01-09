@@ -1,20 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
-import './ShowMoreButton.scss';
 import { useDispatch } from 'react-redux';
+import { Button } from 'semantic-ui-react';
+
 import { changeLimitValue, fetchPokemons } from '../../../actions/pokemons';
+import './ShowMoreButton.scss';
 
 const ShowMoreButton = () => {
   const dispatch = useDispatch();
-  // const location = useLocation();
-  // const bottomRef = useRef();
-
-  // useEffect(() => {
-  //   if (bottomRef.current) {
-  //     bottomRef.current.scrollIntoView();
-  //   }
-  // }, [location]);
 
   return (
     <div className="show__more__button__wrapper">

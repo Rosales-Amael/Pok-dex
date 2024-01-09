@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { useSelector } from 'react-redux';
 import { Card as SemanticCard } from 'semantic-ui-react';
+
 import Card from './Card/Card';
 import './Cards.scss';
 

@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { useSelector } from 'react-redux';
 import { Label } from 'semantic-ui-react';
+
 import './ImageStats.scss';
 
 const ImageStats = () => {
@@ -15,7 +15,7 @@ const ImageStats = () => {
           {currentPokemon &&
             currentPokemon.apiTypes.map((currentType) => (
               <Label image key={currentType.id}>
-                <img src={currentType.image} />
+                <img src={currentType.image} alt={currentType.name} />
                 <Label.Detail>{currentType.name}</Label.Detail>
               </Label>
             ))}

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Label } from 'semantic-ui-react';
+
 import './Resistances.scss';
 
 const Resistances = () => {
@@ -7,6 +8,7 @@ const Resistances = () => {
   const currentPokemon = useSelector(
     (state) => state.pokemons.onePokemonDetails
   );
+
   return (
     <div className="resistances">
       <h1 className="details__resistances__title">Résistances </h1>

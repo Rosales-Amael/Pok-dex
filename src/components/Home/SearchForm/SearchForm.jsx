@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Autocomplete from '@mui/material/Autocomplete';
 
+import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import './SearchForm.scss';
+
 import pokemonsNames from '../../../utils/pokemonsNames';
 import {
   changeSearchValue,
   fetchSearchSinglePokemon,
 } from '../../../actions/pokemons';
+import './SearchForm.scss';
 
 const SearchForm = () => {
   const dispatch = useDispatch();

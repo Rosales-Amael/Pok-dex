@@ -1,14 +1,15 @@
-/* eslint-disable jsx-a11y/alt-text */
 import PropTypes from 'prop-types';
-import { Card as SemanticCard, Label, Image } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Card as SemanticCard, Label, Image } from 'semantic-ui-react';
+
 import { fetchOnePokemonDetails } from '../../../../actions/pokemons';
 import './Card.scss';
 
 const Card = ({ name, pokedexId, image, slug, apiTypes }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   return (
     <SemanticCard
       id="card"
@@ -16,7 +17,6 @@ const Card = ({ name, pokedexId, image, slug, apiTypes }) => {
         dispatch(fetchOnePokemonDetails(slug));
         navigate(`/pokemon/${slug}`);
         window.location.reload();
-        // Merci bébou Louis LE CROLLER
       }}
     >
       <Image src={image} />
@@ -28,7 +28,7 @@ const Card = ({ name, pokedexId, image, slug, apiTypes }) => {
         <Label.Group className="label__group">
           {apiTypes.map((currentType) => (
             <Label image key={currentType.id}>
-              <img src={currentType.image} />
+              <img src={currentType.image} alt={currentType.name} />
               <Label.Detail>{currentType.name}</Label.Detail>
             </Label>
           ))}

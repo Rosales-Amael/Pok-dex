@@ -2,8 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import './Evolution.scss';
+
 import { fetchOnePokemonDetails } from '../../../actions/pokemons';
+import './Evolution.scss';
 
 const Evolution = () => {
   const dispatch = useDispatch();

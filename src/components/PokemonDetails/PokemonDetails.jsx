@@ -1,27 +1,19 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { CircularProgress } from '@mui/material';
-import { Icon } from 'semantic-ui-react';
 
-import {
-  fetchOnePokemonDetails,
-  fetchOnePokemonEvolution,
-  fetchPokemons,
-} from '../../actions/pokemons';
-import { fetchAllTypes } from '../../actions/types';
-
+import Loader from '../Loader/Loader';
 import ImageStats from './ImageStats/ImageStats';
 import Resistances from './Resistances/Resistances';
 import Evolution from './Evolution/Evolution';
 
+import {
+  fetchOnePokemonDetails,
+  fetchOnePokemonEvolution,
+} from '../../actions/pokemons';
+import { fetchAllTypes } from '../../actions/types';
+
 import './PokemonDetails.scss';
-import Loader from '../Loader/Loader';
 
 const PokemonDetails = () => {
   const { slug } = useParams();
@@ -41,7 +33,7 @@ const PokemonDetails = () => {
   useEffect(() => {
     dispatch(fetchOnePokemonDetails(slug));
     dispatch(fetchAllTypes());
-  }, []);
+  }, [dispatch, slug]);
 
   useEffect(() => {
     if (currentPokemon.apiEvolutions && currentPokemon.apiEvolutions.length > 0)

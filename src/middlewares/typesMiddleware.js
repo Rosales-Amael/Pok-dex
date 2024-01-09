@@ -9,12 +9,9 @@ const typesMiddleware = (store) => (next) => (action) => {
       axios
         .get(`${baseApiUrl}/types`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveAllTypes(response.data));
         })
-        .catch((error) => {
-          console.warn(error);
-        });
+        .catch(() => {});
       break;
     }
     default:

@@ -2,20 +2,19 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 100px;
+  padding: 0 50px;
 
   .details__pokemon__name {
     text-align: center;
     font-size: 3em;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin: 15px 0 25px;
   }
 }
 
 @media screen and (max-width: 1850px) {
   .details__wrapper .details__image__progress__wrapper .details__image {
     width: 100%;
-    padding: 0 100px;
   }
 }
 

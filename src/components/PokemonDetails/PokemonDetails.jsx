@@ -21,6 +21,7 @@ import Resistances from './Resistances/Resistances';
 import Evolution from './Evolution/Evolution';
 
 import './PokemonDetails.scss';
+import Loader from '../Loader/Loader';
 
 const PokemonDetails = () => {
   const { slug } = useParams();
@@ -48,29 +49,11 @@ const PokemonDetails = () => {
   }, [dispatch, currentPokemon.apiEvolutions]);
 
   if (!isOnePokemonDetailsLoaded && !isTypesLoaded && !isOnePokemonEvolution) {
-    return (
-      <div className="loader__container">
-        <CircularProgress id="loader" />
-        <span>Chargement...</span>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
     <div className="details__wrapper">
-      <Link to="/">
-        <Icon
-          color="black"
-          circular
-          link="/"
-          name="home"
-          size="large"
-          className="house__icon"
-          onClick={() => {
-            dispatch(fetchPokemons(50));
-          }}
-        />
-      </Link>
       <h1 className="details__pokemon__name">{currentPokemon.name}</h1>
       <ImageStats />
       <Resistances />

@@ -1,34 +1,28 @@
 .App {
   position: relative;
-  width: 80%;
+  width: 95%;
   background-color: #eee;
   border-radius: 5px;
   margin: 100px auto;
   padding: 15px;
 }
 
-.house__icon {
+i.inverted.bordered.icon,
+i.inverted.circular.icon,
+#house__icon {
+  background-color: rgb(0, 145, 255) !important;
   position: absolute;
   top: 15px;
-  left: 35px;
+  left: 15px;
 }
 
-.loader__container {
-  background-color: rgba($color: #000000, $alpha: 0.5);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
+@media screen and (max-width: 650px) {
+  .App {
+    width: 83%;
+  }
 }
 
-#loader {
-  color: white;
-  margin-bottom: 10px;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 575px) {
   .App {
     width: 95%;
   }

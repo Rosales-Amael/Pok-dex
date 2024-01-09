@@ -7,17 +7,15 @@ import './Cards.scss';
 const Cards = () => {
   const homePokemonsList = useSelector((state) => state.pokemons.homePokemons);
   return (
-    <div className="cards__wrapper">
-      <SemanticCard.Group>
-        {Array.isArray(homePokemonsList) ? (
-          homePokemonsList.map((currentPokemon) => (
-            <Card key={currentPokemon.id} {...currentPokemon} />
-          ))
-        ) : (
-          <Card key={homePokemonsList.id} {...homePokemonsList} />
-        )}
-      </SemanticCard.Group>
-    </div>
+    <SemanticCard.Group id="cards__wrapper">
+      {Array.isArray(homePokemonsList) ? (
+        homePokemonsList.map((currentPokemon) => (
+          <Card key={currentPokemon.id} {...currentPokemon} />
+        ))
+      ) : (
+        <Card key={homePokemonsList.id} {...homePokemonsList} />
+      )}
+    </SemanticCard.Group>
   );
 };
 

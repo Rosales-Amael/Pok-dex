@@ -4,18 +4,22 @@ import { Card as SemanticCard, Label, Image } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchOnePokemonDetails } from '../../../../actions/pokemons';
+import './Card.scss';
 
 const Card = ({ name, pokedexId, image, slug, apiTypes }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <SemanticCard
+      id="card"
       onClick={() => {
         dispatch(fetchOnePokemonDetails(slug));
-        navigate(`/pokemon/${slug}`); // Merci bébou Louis LE CROLLER
+        navigate(`/pokemon/${slug}`);
+        window.location.reload();
+        // Merci bébou Louis LE CROLLER
       }}
     >
-      <Image src={image} wrapped ui={false} />
+      <Image src={image} />
       <SemanticCard.Content>
         <SemanticCard.Header>{name}</SemanticCard.Header>
         <SemanticCard.Meta>

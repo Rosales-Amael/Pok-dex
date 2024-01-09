@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Evolution.scss';
 import { fetchOnePokemonDetails } from '../../../actions/pokemons';
 
 const Evolution = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentPokemon = useSelector(
     (state) => state.pokemons.onePokemonDetails
   );
@@ -24,6 +26,8 @@ const Evolution = () => {
               className="circle__image__evolution"
               onClick={() => {
                 dispatch(fetchOnePokemonDetails(onePokemonEvolution.name));
+                navigate(`/pokemon/${onePokemonEvolution.name}`);
+                window.location.reload();
               }}
             >
               <img

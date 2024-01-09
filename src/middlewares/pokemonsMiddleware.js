@@ -50,6 +50,7 @@ const pokemonsMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          window.location.href = '/404';
         });
       break;
     }

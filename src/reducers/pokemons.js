@@ -11,7 +11,7 @@ const initialState = {
   homePokemons: [],
   onePokemonDetails: {},
   onePokemonEvolution: {},
-  searchValue: 'td',
+  searchValue: '',
   limitValue: 50,
   isHomePokemonsLoaded: false,
   isOnePokemonDetailsLoaded: false,

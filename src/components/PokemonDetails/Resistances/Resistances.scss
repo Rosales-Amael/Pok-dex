@@ -14,9 +14,9 @@
 
   .resists__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
     flex-wrap: wrap;
-    align-content: flex-start;
 
     #neutral {
       color: gray;
@@ -45,7 +45,7 @@
       align-items: center;
 
       .details__resist__category {
-        margin: 5px 0 15px 0;
+        margin-top: 5px;
         color: gray;
         font-weight: bold;
       }

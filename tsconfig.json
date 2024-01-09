@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -14,12 +15,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react"
   },
   "include": [
     "vite.config.ts",
     ".eslintrc.cjs",
     "src"
   ],
+  
   "references": [{ "path": "./tsconfig.node.json" }]
 }

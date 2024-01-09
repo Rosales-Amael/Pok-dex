@@ -1,7 +1,34 @@
-.cards__wrapper {
-  margin-top: 50px;
+#cards__wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .label__group {
   margin-top: 10px;
+}
+
+@media screen and (max-width: 1600px) {
+  #cards__wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #cards__wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #cards__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #cards__wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
